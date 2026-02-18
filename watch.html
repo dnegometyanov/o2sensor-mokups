@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O2 Pulse — Watch / Bracelet</title>
+<link rel="stylesheet" href="css/shared.css">
+<link rel="stylesheet" href="css/watch.css">
+</head>
+<body>
+
+<!-- Top Nav -->
+<nav class="top-nav">
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="concept-a.html">Concept A</a>
+    <a class="nav-link active" href="watch.html">Watch</a>
+  </div>
+  <button class="theme-toggle-page" id="themeToggle" aria-label="Toggle theme">
+    <span class="theme-icon" id="themeIcon">&#9790;</span>
+    <span id="themeLabel">Dark</span>
+  </button>
+</nav>
+
+<!-- Page Header -->
+<div class="page-header">
+  <h1>Watch / Bracelet</h1>
+  <p>OLED watch face mockup &middot; Real-time SpO2 &amp; Pulse</p>
+</div>
+
+<!-- Watch Mockup -->
+<div class="watch-wrapper">
+  <!-- Top band -->
+  <div class="watch-band-top"></div>
+
+  <!-- Watch body -->
+  <div class="watch-body">
+    <div class="watch-screen">
+      <!-- Time -->
+      <div class="watch-time">9:41</div>
+
+      <!-- O2 Section (top half) -->
+      <div class="watch-o2">
+        <div class="watch-o2-label">SpO2</div>
+        <div class="watch-o2-row">
+          <div>
+            <span class="watch-o2-value" id="watchO2Value">--</span><span class="watch-o2-percent">%</span>
+          </div>
+          <canvas class="watch-o2-spark" id="watchO2Spark"></canvas>
+        </div>
+      </div>
+
+      <!-- Pulse Section (bottom half) -->
+      <div class="watch-pulse">
+        <div class="watch-pulse-label">Pulse</div>
+        <div class="watch-pulse-row">
+          <span class="watch-pulse-heart">&hearts;</span>
+          <div>
+            <span class="watch-pulse-value" id="watchPulseValue">--</span><span class="watch-pulse-unit">bpm</span>
+          </div>
+          <canvas class="watch-pulse-spark" id="watchPulseSpark"></canvas>
+        </div>
+      </div>
+
+      <!-- BT connection -->
+      <div class="watch-connection">
+        <div class="watch-bt-dot"></div>
+        <span class="watch-bt-label">BT Connected</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom band -->
+  <div class="watch-band-bottom">
+    <div class="band-holes">
+      <div class="band-hole"></div>
+      <div class="band-hole"></div>
+      <div class="band-hole"></div>
+      <div class="band-hole"></div>
+      <div class="band-hole"></div>
+    </div>
+  </div>
+</div>
+
+<script src="js/shared.js"></script>
+<script src="js/watch.js"></script>
+</body>
+</html>

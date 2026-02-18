@@ -1,0 +1,238 @@
+/* ============================================
+   WATCH MOCKUP
+   ============================================ */
+.watch-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Watch band (top) */
+.watch-band-top, .watch-band-bottom {
+  width: 80px;
+  background: #1a1a1a;
+  border-radius: 4px;
+  position: relative;
+}
+.watch-band-top {
+  height: 80px;
+  border-radius: 12px 12px 4px 4px;
+  background: linear-gradient(180deg, #222 0%, #1a1a1a 30%, #181818 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.watch-band-bottom {
+  height: 100px;
+  border-radius: 4px 4px 16px 16px;
+  background: linear-gradient(180deg, #181818 0%, #1a1a1a 70%, #222 100%);
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,0.06);
+}
+/* Band texture lines */
+.watch-band-top::after, .watch-band-bottom::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent,
+    transparent 6px,
+    rgba(255,255,255,0.03) 6px,
+    rgba(255,255,255,0.03) 7px
+  );
+}
+/* Band holes */
+.watch-band-bottom .band-holes {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.band-hole {
+  width: 16px;
+  height: 6px;
+  border-radius: 3px;
+  background: #0d0d0d;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+}
+
+/* Watch body */
+.watch-body {
+  width: 200px;
+  height: 260px;
+  border-radius: 40px;
+  background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 50%, #111 100%);
+  padding: 10px;
+  position: relative;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.08),
+    0 10px 40px rgba(0,0,0,0.6),
+    0 2px 8px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    inset 0 -1px 0 rgba(0,0,0,0.3);
+}
+/* Side button */
+.watch-body::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 60px;
+  width: 4px;
+  height: 30px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, #3a3a3a, #2a2a2a, #3a3a3a);
+  box-shadow: 1px 0 2px rgba(0,0,0,0.3);
+}
+
+/* OLED Screen */
+.watch-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+  background: #000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 12px;
+  position: relative;
+}
+
+/* Watch time */
+.watch-time {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* Watch O2 section */
+.watch-o2 {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 4px;
+}
+.watch-o2-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 2px;
+}
+.watch-o2-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.watch-o2-value {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1;
+  color: #30d158;
+  text-shadow: 0 0 20px rgba(48, 209, 88, 0.4);
+  transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+.watch-o2-percent {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  margin-left: -4px;
+}
+.watch-o2-spark {
+  width: 60px;
+  height: 30px;
+  display: block;
+}
+
+/* Watch pulse section */
+.watch-pulse {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.watch-pulse-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 2px;
+}
+.watch-pulse-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.watch-pulse-heart {
+  font-size: 18px;
+  color: #ff3b30;
+  animation: watchHeartbeat 1s ease-in-out infinite;
+  text-shadow: 0 0 12px rgba(255, 59, 48, 0.4);
+}
+@keyframes watchHeartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.25); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+  60% { transform: scale(1); }
+}
+.watch-pulse-value {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -2px;
+  line-height: 1;
+  color: #ff453a;
+  text-shadow: 0 0 20px rgba(255, 69, 58, 0.35);
+}
+.watch-pulse-unit {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.35);
+  margin-left: -2px;
+}
+.watch-pulse-spark {
+  width: 60px;
+  height: 30px;
+  display: block;
+}
+
+/* Watch connection indicator */
+.watch-connection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+.watch-bt-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #0a84ff;
+  box-shadow: 0 0 6px rgba(10, 132, 255, 0.5);
+  animation: watchPulseDot 2s ease-in-out infinite;
+}
+@keyframes watchPulseDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.watch-bt-label {
+  font-size: 8px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.3px;
+}

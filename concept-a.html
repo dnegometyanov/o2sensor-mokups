@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O2 Pulse — Concept A: Clinical Monitor</title>
+<link rel="stylesheet" href="css/shared.css">
+<link rel="stylesheet" href="css/concept-a.css">
+</head>
+<body>
+
+<!-- Top Nav -->
+<nav class="top-nav">
+  <div class="nav-links">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link active" href="concept-a.html">Concept A</a>
+    <a class="nav-link" href="watch.html">Watch</a>
+  </div>
+  <button class="theme-toggle-page" id="themeToggle" aria-label="Toggle theme">
+    <span class="theme-icon" id="themeIcon">&#9790;</span>
+    <span id="themeLabel">Dark</span>
+  </button>
+</nav>
+
+<!-- Page Header -->
+<div class="page-header">
+  <h1>Concept A: Clinical Monitor</h1>
+  <p>Interactive iPhone mockup &middot; Liquid Glass design</p>
+</div>
+
+<!-- iPhone Frame -->
+<div class="iphone-wrapper">
+  <div class="iphone-frame">
+    <div class="mesh-bg"></div>
+    <div class="dynamic-island"></div>
+
+    <!-- iOS Status Bar -->
+    <div class="status-bar">
+      <span>9:41</span>
+      <div class="status-bar-right">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 11.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-3zm3.5-2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-5zm3.5-2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3.5-2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-9z"/></svg>
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M0 8.5a.5.5 0 0 1 .5-.5h7.793L5.854 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L8.293 8.5H.5a.5.5 0 0 1-.5-.5z" transform="rotate(-45 8 8)"/></svg>
+        <svg viewBox="0 0 24 12" fill="currentColor"><rect x="0" y="0" width="22" height="12" rx="3" ry="3" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="2" width="15" height="8" rx="1.5" ry="1.5" fill="currentColor"/><rect x="23" y="3.5" width="2" height="5" rx="1" fill="currentColor" opacity="0.4"/></svg>
+      </div>
+    </div>
+
+    <!-- App Content -->
+    <div class="app-content">
+
+      <!-- ===== MAIN SCREEN ===== -->
+      <div class="app-screen active" id="screenMain">
+
+        <!-- Connection Status -->
+        <div class="connection-pill">
+          <div class="connection-dot"></div>
+          <svg class="watch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="3"/>
+            <line x1="9" y1="2" x2="9" y2="4"/>
+            <line x1="15" y1="2" x2="15" y2="4"/>
+            <line x1="9" y1="20" x2="9" y2="22"/>
+            <line x1="15" y1="20" x2="15" y2="22"/>
+          </svg>
+          <span>Connected</span>
+          <span class="battery">87%</span>
+        </div>
+
+        <!-- SpO2 Gauge -->
+        <div class="spo2-section">
+          <div class="spo2-gauge">
+            <svg viewBox="0 0 200 200">
+              <circle class="gauge-glow" cx="100" cy="100" r="80" stroke-dasharray="0 502" id="gaugeGlow"/>
+              <circle class="gauge-track" cx="100" cy="100" r="80" stroke-dasharray="377 502"/>
+              <circle class="gauge-fill" cx="100" cy="100" r="80" stroke="var(--green)" stroke-dasharray="0 502" id="gaugeFill"/>
+            </svg>
+            <div class="spo2-value-group">
+              <div>
+                <span class="spo2-value" id="spo2Value">--</span><span class="spo2-unit">%</span>
+              </div>
+              <div class="spo2-label">Blood Oxygen</div>
+              <div class="spo2-status" id="spo2Status">Normal</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pulse -->
+        <div class="pulse-section">
+          <span class="pulse-heart">&hearts;</span>
+          <span class="pulse-value" id="pulseValue">--</span>
+          <span class="pulse-unit">bpm</span>
+        </div>
+
+        <!-- PPG Waveform -->
+        <div class="ppg-section">
+          <div class="glass-card ppg-card">
+            <div class="ppg-label">Live Waveform</div>
+            <canvas class="ppg-canvas" id="ppgCanvas"></canvas>
+          </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-section">
+          <div class="period-selector">
+            <button class="period-btn active" data-period="D">D</button>
+            <button class="period-btn" data-period="W">W</button>
+            <button class="period-btn" data-period="M">M</button>
+            <button class="period-btn" data-period="6M">6M</button>
+            <button class="period-btn" data-period="Y">Y</button>
+          </div>
+          <div class="glass-card chart-card">
+            <div class="chart-header">
+              <span class="chart-title">SpO2 History</span>
+              <span class="chart-subtitle" id="chartSubtitle">Today</span>
+            </div>
+            <canvas class="chart-canvas" id="chartCanvas"></canvas>
+            <div class="chart-stats">
+              <div class="chart-stat">
+                <div class="chart-stat-value" id="statAvg">--</div>
+                <div class="chart-stat-label">Average</div>
+              </div>
+              <div class="chart-stat">
+                <div class="chart-stat-value" id="statMin">--</div>
+                <div class="chart-stat-label">Minimum</div>
+              </div>
+              <div class="chart-stat">
+                <div class="chart-stat-value" id="statMax">--</div>
+                <div class="chart-stat-label">Maximum</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ===== ALERTS SCREEN ===== -->
+      <div class="app-screen" id="screenAlerts">
+
+        <div class="alerts-header">Notifications</div>
+
+        <!-- O2 Threshold -->
+        <div class="alert-section">
+          <div class="section-label">O2 Alert Threshold</div>
+          <div class="glass-card threshold-card">
+            <div class="threshold-header">
+              <span class="threshold-name">SpO2 Low Alert</span>
+              <span class="threshold-value-display" id="o2ThresholdDisplay">92%</span>
+            </div>
+            <div class="slider-container">
+              <input type="range" id="o2Slider" min="80" max="100" value="92" step="1">
+            </div>
+            <div class="slider-labels">
+              <span>80%</span>
+              <span>90%</span>
+              <span>100%</span>
+            </div>
+            <div class="threshold-context" id="o2Context">Alert when SpO2 drops below 92%. Recommended for general wellness monitoring.</div>
+          </div>
+        </div>
+
+        <!-- Pulse Thresholds -->
+        <div class="alert-section">
+          <div class="section-label">Pulse Alert Thresholds</div>
+          <div class="glass-card threshold-card">
+            <div class="threshold-header">
+              <span class="threshold-name">High Pulse Alert</span>
+              <span class="threshold-value-display" id="pulseHighDisplay">120 bpm</span>
+            </div>
+            <div class="slider-container">
+              <input type="range" id="pulseHighSlider" min="80" max="200" value="120" step="5">
+            </div>
+            <div class="slider-labels">
+              <span>80</span>
+              <span>140</span>
+              <span>200</span>
+            </div>
+          </div>
+          <div class="glass-card threshold-card" style="margin-top:8px">
+            <div class="threshold-header">
+              <span class="threshold-name">Low Pulse Alert</span>
+              <span class="threshold-value-display" id="pulseLowDisplay">50 bpm</span>
+            </div>
+            <div class="slider-container">
+              <input type="range" id="pulseLowSlider" min="30" max="80" value="50" step="5">
+            </div>
+            <div class="slider-labels">
+              <span>30</span>
+              <span>55</span>
+              <span>80</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alert Actions -->
+        <div class="alert-section">
+          <div class="section-label">Alert Actions</div>
+          <div class="glass-card" style="padding:4px 16px">
+
+            <div class="alert-action-item">
+              <div class="action-left">
+                <div class="action-icon red">&#9888;</div>
+                <div>
+                  <div class="action-label">Red Screen on Watch</div>
+                  <div class="action-sublabel">Flash watch screen red</div>
+                </div>
+              </div>
+              <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+
+            <div class="alert-action-item">
+              <div class="action-left">
+                <div class="action-icon red">&#128241;</div>
+                <div>
+                  <div class="action-label">Critical Alert on Phone</div>
+                  <div class="action-sublabel">Red screen + push notification</div>
+                </div>
+              </div>
+              <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+
+            <div class="alert-action-item">
+              <div class="action-left">
+                <div class="action-icon orange">&#128243;</div>
+                <div>
+                  <div class="action-label">Vibration on Watch</div>
+                  <div class="action-sublabel">Haptic feedback alert</div>
+                </div>
+              </div>
+              <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+
+            <div class="alert-action-item">
+              <div class="action-left">
+                <div class="action-icon orange">&#128244;</div>
+                <div><div class="action-label">Vibration on Phone</div></div>
+              </div>
+              <label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label>
+            </div>
+
+            <div class="alert-action-item">
+              <div class="action-left">
+                <div class="action-icon blue">&#128266;</div>
+                <div>
+                  <div class="action-label">Sound on Watch</div>
+                  <div class="action-sublabel">Audible alarm</div>
+                </div>
+              </div>
+              <label class="toggle-switch"><input type="checkbox" checked><span class="toggle-slider"></span></label>
+            </div>
+
+            <div class="alert-action-item">
+              <div class="action-left">
+                <div class="action-icon blue">&#128264;</div>
+                <div><div class="action-label">Sound on Phone</div></div>
+              </div>
+              <label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label>
+            </div>
+
+            <div class="alert-action-item" style="flex-wrap:wrap">
+              <div class="action-left">
+                <div class="action-icon purple">&#9993;</div>
+                <div>
+                  <div class="action-label">Email Alerts</div>
+                  <div class="action-sublabel">Send email notifications</div>
+                </div>
+              </div>
+              <label class="toggle-switch"><input type="checkbox" data-toggle-input="emailInputs"><span class="toggle-slider"></span></label>
+              <div class="contact-input-group" id="emailInputs">
+                <input class="contact-input" type="email" placeholder="email@example.com">
+                <button class="add-contact-btn">+ Add another email</button>
+              </div>
+            </div>
+
+            <div class="alert-action-item" style="flex-wrap:wrap">
+              <div class="action-left">
+                <div class="action-icon green">&#128172;</div>
+                <div>
+                  <div class="action-label">SMS Alerts</div>
+                  <div class="action-sublabel">Text message notifications</div>
+                </div>
+              </div>
+              <label class="toggle-switch"><input type="checkbox" data-toggle-input="smsInputs"><span class="toggle-slider"></span></label>
+              <div class="contact-input-group" id="smsInputs">
+                <input class="contact-input" type="tel" placeholder="+1 (555) 000-0000">
+                <button class="add-contact-btn">+ Add another number</button>
+              </div>
+            </div>
+
+            <div class="alert-action-item" style="flex-wrap:wrap">
+              <div class="action-left">
+                <div class="action-icon teal">&#128222;</div>
+                <div>
+                  <div class="action-label">Emergency Call</div>
+                  <div class="action-sublabel">Auto-dial on critical alert</div>
+                </div>
+              </div>
+              <label class="toggle-switch"><input type="checkbox" data-toggle-input="callInputs"><span class="toggle-slider"></span></label>
+              <div class="contact-input-group" id="callInputs">
+                <input class="contact-input" type="tel" placeholder="+1 (555) 000-0000">
+                <button class="add-contact-btn">+ Add another number</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="alerts-bottom-pad"></div>
+      </div>
+
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="tab-bar">
+      <button class="tab-item active" data-tab="screenMain">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+        <span>Monitor</span>
+      </button>
+      <button class="tab-item" data-tab="screenAlerts">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+        <span>Alerts</span>
+      </button>
+    </div>
+
+    <div class="home-indicator"></div>
+  </div>
+</div>
+
+<script src="js/shared.js"></script>
+<script src="js/concept-a.js"></script>
+</body>
+</html>
