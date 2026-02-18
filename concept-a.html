@@ -78,29 +78,29 @@
 
         </div><!-- /main-top-row -->
 
-        <!-- SpO2 Gauge -->
-        <div class="spo2-section">
-          <div class="spo2-gauge">
-            <svg viewBox="0 0 200 200">
-              <circle class="gauge-glow" cx="100" cy="100" r="80" stroke-dasharray="0 502" id="gaugeGlow"/>
-              <circle class="gauge-track" cx="100" cy="100" r="80" stroke-dasharray="377 502"/>
-              <circle class="gauge-fill" cx="100" cy="100" r="80" stroke="var(--green)" stroke-dasharray="0 502" id="gaugeFill"/>
-            </svg>
-            <div class="spo2-value-group">
-              <div>
-                <span class="spo2-value" id="spo2Value">--</span><span class="spo2-unit">%</span>
+        <!-- Vitals: SpO2 gauge + Pulse badge -->
+        <div class="vitals-row">
+          <div class="spo2-section">
+            <div class="spo2-gauge">
+              <svg viewBox="0 0 200 200">
+                <circle class="gauge-glow" cx="100" cy="100" r="80" stroke-dasharray="0 502" id="gaugeGlow"/>
+                <circle class="gauge-track" cx="100" cy="100" r="80" stroke-dasharray="377 502"/>
+                <circle class="gauge-fill" cx="100" cy="100" r="80" stroke="var(--green)" stroke-dasharray="0 502" id="gaugeFill"/>
+              </svg>
+              <div class="spo2-value-group">
+                <div>
+                  <span class="spo2-value" id="spo2Value">--</span><span class="spo2-unit">%</span>
+                </div>
+                <div class="spo2-label">Blood Oxygen</div>
+                <div class="spo2-status" id="spo2Status">Normal</div>
               </div>
-              <div class="spo2-label">Blood Oxygen</div>
-              <div class="spo2-status" id="spo2Status">Normal</div>
             </div>
           </div>
-        </div>
-
-        <!-- Pulse -->
-        <div class="pulse-section">
-          <span class="pulse-heart">&hearts;</span>
-          <span class="pulse-value" id="pulseValue">--</span>
-          <span class="pulse-unit">bpm</span>
+          <div class="pulse-badge">
+            <span class="pulse-heart">&hearts;</span>
+            <span class="pulse-value" id="pulseValue">--</span>
+            <span class="pulse-unit">bpm</span>
+          </div>
         </div>
 
         <!-- Health Alerts -->
