@@ -663,6 +663,106 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 /* ============================================
+   HEALTH ALERT NOTIFICATIONS
+   ============================================ */
+.health-alerts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.health-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 16px;
+  position: relative;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.health-alert.dismissing {
+  opacity: 0;
+  transform: translateX(-30px);
+  pointer-events: none;
+}
+.alert-red {
+  background: rgba(255, 59, 48, 0.12);
+  border: 1px solid rgba(255, 59, 48, 0.25);
+}
+.alert-yellow {
+  background: rgba(255, 214, 10, 0.10);
+  border: 1px solid rgba(255, 214, 10, 0.20);
+}
+[data-theme="light"] .alert-red {
+  background: rgba(255, 59, 48, 0.08);
+  border-color: rgba(255, 59, 48, 0.2);
+}
+[data-theme="light"] .alert-yellow {
+  background: rgba(255, 180, 0, 0.08);
+  border-color: rgba(255, 180, 0, 0.2);
+}
+.health-alert-icon {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.alert-red .health-alert-icon {
+  color: var(--red);
+  text-shadow: 0 0 8px rgba(255, 59, 48, 0.4);
+}
+.alert-yellow .health-alert-icon {
+  color: var(--yellow);
+  text-shadow: 0 0 8px rgba(255, 214, 10, 0.4);
+}
+.health-alert-body {
+  flex: 1;
+  min-width: 0;
+}
+.health-alert-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.alert-red .health-alert-title {
+  color: var(--red);
+}
+.alert-yellow .health-alert-title {
+  color: var(--yellow);
+}
+[data-theme="light"] .alert-yellow .health-alert-title {
+  color: #b8860b;
+}
+.health-alert-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+.health-alert-desc strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.health-alert-time {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+}
+.health-alert-dismiss {
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+.health-alert-dismiss:hover {
+  color: var(--text-primary);
+}
+
+/* ============================================
    MAIN TOP ROW (connection pill + user icon)
    ============================================ */
 .main-top-row {

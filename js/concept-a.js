@@ -290,6 +290,17 @@ window.addEventListener('resize', () => {
 });
 
 // ============================================
+// HEALTH ALERT DISMISS
+// ============================================
+document.querySelectorAll('.health-alert-dismiss').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const alert = btn.closest('.health-alert');
+    alert.classList.add('dismissing');
+    setTimeout(() => alert.remove(), 300);
+  });
+});
+
+// ============================================
 // AUTH MODAL
 // ============================================
 const authOverlay = document.getElementById('authOverlay');
