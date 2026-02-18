@@ -78,7 +78,7 @@
 
         </div><!-- /main-top-row -->
 
-        <!-- Vitals: SpO2 gauge + Pulse badge -->
+        <!-- Vitals: SpO2 gauge + Pulse + PPG -->
         <div class="vitals-row">
           <div class="spo2-section">
             <div class="spo2-gauge">
@@ -100,6 +100,7 @@
             <span class="pulse-heart">&hearts;</span>
             <span class="pulse-value" id="pulseValue">--</span>
             <span class="pulse-unit">bpm</span>
+            <canvas class="ppg-canvas" id="ppgCanvas"></canvas>
           </div>
         </div>
 
@@ -120,14 +121,6 @@
               <div class="health-alert-desc">3 events, longest pause <strong>18s</strong></div>
             </div>
             <button class="health-alert-dismiss" aria-label="Dismiss">&times;</button>
-          </div>
-        </div>
-
-        <!-- PPG Waveform -->
-        <div class="ppg-section">
-          <div class="glass-card ppg-card">
-            <div class="ppg-label">Live Waveform</div>
-            <canvas class="ppg-canvas" id="ppgCanvas"></canvas>
           </div>
         </div>
 
