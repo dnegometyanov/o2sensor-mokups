@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>O2 Pulse — Concept A: Clinical Monitor</title>
+<title>O2 Pulse — Concept B: Wellness Dashboard</title>
 <link rel="stylesheet" href="css/shared.css">
 <link rel="stylesheet" href="css/iphone-chrome.css">
-<link rel="stylesheet" href="css/concept-a.css">
+<link rel="stylesheet" href="css/concept-b.css">
 </head>
 <body>
 
@@ -14,8 +14,8 @@
 <nav class="top-nav">
   <div class="nav-links">
     <a class="nav-link" href="index.html">Home</a>
-    <a class="nav-link active" href="concept-a.html">Concept A</a>
-    <a class="nav-link" href="concept-b.html">Concept B</a>
+    <a class="nav-link" href="concept-a.html">Concept A</a>
+    <a class="nav-link active" href="concept-b.html">Concept B</a>
     <a class="nav-link" href="watch.html">Watch</a>
   </div>
   <button class="theme-toggle-page" id="themeToggle" aria-label="Toggle theme">
@@ -26,8 +26,8 @@
 
 <!-- Page Header -->
 <div class="page-header">
-  <h1>Concept A: Clinical Monitor</h1>
-  <p>Interactive iPhone mockup &middot; Liquid Glass design</p>
+  <h1>Concept B: Wellness Dashboard</h1>
+  <p>Interactive iPhone mockup &middot; Fitness &amp; lifestyle design</p>
 </div>
 
 <!-- iPhone Frame -->
@@ -80,31 +80,74 @@
 
         </div><!-- /main-top-row -->
 
-        <!-- Vitals: SpO2 gauge + Pulse + PPG -->
-        <div class="vitals-row">
-          <div class="spo2-section">
-            <div class="spo2-gauge">
-              <svg viewBox="0 0 200 200">
-                <circle class="gauge-glow" cx="100" cy="100" r="80" stroke-dasharray="0 502" id="gaugeGlow"/>
-                <circle class="gauge-track" cx="100" cy="100" r="80" stroke-dasharray="377 502"/>
-                <circle class="gauge-fill" cx="100" cy="100" r="80" stroke="var(--green)" stroke-dasharray="0 502" id="gaugeFill"/>
-              </svg>
-              <div class="spo2-value-group">
-                <div>
-                  <span class="spo2-value" id="spo2Value">--</span><span class="spo2-unit">%</span>
-                </div>
-                <div class="spo2-label">Blood Oxygen</div>
-                <div class="spo2-status" id="spo2Status">Normal</div>
-              </div>
+        <!-- Donut Rings: SpO2 + Pulse -->
+        <div class="rings-row">
+          <div class="ring-container">
+            <svg class="ring-svg" viewBox="0 0 120 120">
+              <circle class="ring-track" cx="60" cy="60" r="50"/>
+              <circle class="ring-fill ring-o2" cx="60" cy="60" r="50" id="ringO2"/>
+            </svg>
+            <div class="ring-center">
+              <span class="ring-value" id="ringO2Value">--</span>
+              <span class="ring-unit">%</span>
+            </div>
+            <div class="ring-label">SpO2</div>
+          </div>
+          <div class="ring-container">
+            <svg class="ring-svg" viewBox="0 0 120 120">
+              <circle class="ring-track" cx="60" cy="60" r="50"/>
+              <circle class="ring-fill ring-pulse" cx="60" cy="60" r="50" id="ringPulse"/>
+            </svg>
+            <div class="ring-center">
+              <span class="ring-heart">&hearts;</span>
+              <span class="ring-value" id="ringPulseValue">--</span>
+            </div>
+            <div class="ring-label">Pulse</div>
+          </div>
+        </div>
+
+        <!-- Stats Cards: Wellness Score + Streak -->
+        <div class="stats-row">
+          <div class="wellness-card score-card glass-card">
+            <div class="card-top-row">
+              <span class="card-label">Wellness</span>
+              <span class="card-value" id="scoreValue">87</span><span class="card-max">/100</span>
+            </div>
+            <div class="score-bar-track">
+              <div class="score-bar-fill" id="scoreBar" style="width:87%"></div>
             </div>
           </div>
-          <div class="pulse-badge">
-            <div class="pulse-row">
-              <span class="pulse-heart">&hearts;</span>
-              <span class="pulse-value" id="pulseValue">--</span>
-              <span class="pulse-unit">bpm</span>
+          <div class="wellness-card streak-card glass-card">
+            <div class="card-top-row">
+              <span class="card-label">Streak</span>
+              <span class="streak-fire">&#128293;</span>
             </div>
-            <canvas class="ppg-canvas" id="ppgCanvas"></canvas>
+            <div class="streak-value"><span id="streakDays">14</span> days</div>
+          </div>
+        </div>
+
+        <!-- Sleep Card -->
+        <div class="sleep-card glass-card">
+          <div class="sleep-header">
+            <span class="sleep-icon">&#9789;</span>
+            <span class="sleep-title">Sleep Summary</span>
+          </div>
+          <div class="sleep-body">
+            <div class="sleep-stats">
+              <div class="sleep-stat">
+                <div class="sleep-stat-value" id="sleepDuration">7h 24m</div>
+                <div class="sleep-stat-label">Duration</div>
+              </div>
+              <div class="sleep-stat">
+                <div class="sleep-stat-value" id="sleepAvgO2">96%</div>
+                <div class="sleep-stat-label">Avg SpO2</div>
+              </div>
+              <div class="sleep-stat">
+                <div class="sleep-stat-value" id="sleepEvents">2</div>
+                <div class="sleep-stat-label">Events</div>
+              </div>
+            </div>
+            <canvas class="sleep-chart-canvas" id="sleepChart"></canvas>
           </div>
         </div>
 
@@ -415,6 +458,6 @@
 
 <script src="js/shared.js"></script>
 <script src="js/iphone-chrome.js"></script>
-<script src="js/concept-a.js"></script>
+<script src="js/concept-b.js"></script>
 </body>
 </html>
