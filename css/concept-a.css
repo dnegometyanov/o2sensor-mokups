@@ -165,13 +165,13 @@
    ============================================ */
 .spo2-section {
   text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 .spo2-gauge {
   position: relative;
-  width: 200px;
-  height: 200px;
-  margin: 0 auto 8px;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 4px;
 }
 .spo2-gauge svg {
   width: 100%;
@@ -210,30 +210,30 @@
   justify-content: center;
 }
 .spo2-value {
-  font-size: 56px;
+  font-size: 44px;
   font-weight: 700;
-  letter-spacing: -3px;
+  letter-spacing: -2px;
   color: var(--text-primary);
   line-height: 1;
   animation: breathe 4s ease-in-out infinite;
 }
 .spo2-unit {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   color: var(--text-secondary);
   letter-spacing: 0;
 }
 .spo2-label {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 500;
   color: var(--text-secondary);
-  margin-top: 2px;
+  margin-top: 1px;
 }
 .spo2-status {
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 600;
-  margin-top: 4px;
-  padding: 2px 10px;
+  margin-top: 3px;
+  padding: 2px 8px;
   border-radius: 100px;
   background: rgba(48, 209, 88, 0.15);
   color: var(--green);
@@ -251,7 +251,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 .pulse-heart {
   font-size: 20px;
@@ -281,7 +281,7 @@
    PPG WAVEFORM
    ============================================ */
 .ppg-section {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 .ppg-card {
   padding: 12px;
@@ -305,7 +305,7 @@
    PERIOD SELECTOR + CHART
    ============================================ */
 .chart-section {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .period-selector {
   display: flex;
@@ -668,15 +668,15 @@ input[type="range"]::-webkit-slider-runnable-track {
 .health-alerts {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 6px;
+  margin-bottom: 10px;
 }
 .health-alert {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 12px;
-  border-radius: 16px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 12px;
   position: relative;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -702,10 +702,9 @@ input[type="range"]::-webkit-slider-runnable-track {
   border-color: rgba(255, 180, 0, 0.2);
 }
 .health-alert-icon {
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1;
   flex-shrink: 0;
-  margin-top: 1px;
 }
 .alert-red .health-alert-icon {
   color: var(--red);
@@ -720,9 +719,12 @@ input[type="range"]::-webkit-slider-runnable-track {
   min-width: 0;
 }
 .health-alert-title {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
 }
 .alert-red .health-alert-title {
   color: var(--red);
@@ -734,18 +736,18 @@ input[type="range"]::-webkit-slider-runnable-track {
   color: #b8860b;
 }
 .health-alert-desc {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-secondary);
-  line-height: 1.4;
+  line-height: 1.3;
 }
 .health-alert-desc strong {
   color: var(--text-primary);
   font-weight: 600;
 }
 .health-alert-time {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-tertiary);
-  margin-top: 4px;
+  font-weight: 400;
 }
 .health-alert-dismiss {
   background: none;
